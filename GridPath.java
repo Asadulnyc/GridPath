@@ -1,22 +1,11 @@
 public class GridPath {
-    /** Initialized in the constructor with distinct values that never change */
     private int[][] grid;
-
 
     public GridPath(int[][] values)
     {
         grid = values;
     }
 
-    /**
-     * Returns the Location representing a neighbor of the grid element at row and
-     * col,
-     * as described in part (a)
-     * Preconditions: row is a valid row index and col is a valid column index in
-     * grid.
-     * row and col do not specify the element in the last row and last column of
-     * grid.
-     */
     public Location getNextLoc(int row, int col) 
     {
         int below = Integer.MAX_VALUE;
@@ -25,19 +14,8 @@ public class GridPath {
         if(col<grid[0].length-1) right = grid[row][col+1];
         if(below<right) return new Location(row+1,col);
         else return new Location(row, col+1);
-
-        /* to be implemented in part (a) */ 
     }
 
-    /**
-     * Computes and returns the sum of all values on a path through grid, as
-     * described in
-     * part (b)
-     * Preconditions: row is a valid row index and col is a valid column index in
-     * grid.
-     * row and col do not specify the element in the last row and last column of
-     * grid.
-     */
     public int sumPath(int row, int col) {
         int sum = grid[row][col];
         while(row<grid.length-1||col<grid[0].length-1)
@@ -48,7 +26,6 @@ public class GridPath {
             sum += grid[row][col];
         }
         return sum;
-        /* to be implemented in part (b) */ 
     }
 
     public String toString()
